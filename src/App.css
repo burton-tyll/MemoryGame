@@ -1,0 +1,94 @@
+body{
+    background-color: #1F1F1F;
+    width: 100%;
+}
+
+#root{
+    width: 100%;
+}
+
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*---------------*/            /*-------------*/
+/*---------------/-Components*/
+/*-------------*/            /*-------------*/
+
+/*--------------------*/
+/*----------------------Cards*/
+/*--------------------*/
+.frame {
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.cardAnimate {
+    width: 150px;
+    height: 150px;
+    transition: transform 1s ease;
+    transform: rotateY(180deg);
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 150px);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.disabledCard{
+    width: 150px;
+    height: 150px;
+    transition: transform 1s ease;
+    transform: rotateY(180deg);
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+/*--------------------*/
+/*----------------------Start Button*/
+/*--------------------*/
+
+.startButton{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    padding: 10px;
+    background-color: #403F42;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid white;
+    margin-top: 10px;
+}
+
+/*--------------------*/
+/*----------------------Counter*/
+/*--------------------*/
+
+.hideCounter{
+    position: absolute;
+    display: none;
+}
+
+.Counter{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
