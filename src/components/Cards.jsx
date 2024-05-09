@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Counter from "./Counter";
 import Start from "./Start"
+import Board from "./Board";
 
 function Cards(){
 
@@ -11,6 +11,10 @@ function Cards(){
     const [secondCard, setSecondCard] = useState(null);
     const [firstCardID, setFirstCardID] = useState(null);
     const [secondCardID, setSecondCardID] = useState(null);
+    const [error1, setError1] = useState(false)
+    const [error2, setError2] = useState(false)
+    const [error3, setError3] = useState(false)
+    const [error4, setError4] = useState(false)
 
     const [cards, setCards] = useState([
             { id: 1, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/heisenberg.jpg", animate: "frame"},
@@ -75,15 +79,12 @@ function Cards(){
     };
 
     const chooseCards = (id) => {
-        console.log(cards)
         const cardOne = cards.map(card => {
             if (id === card.id && firstCard === null){
-                console.log('first card: '+card.srcReturn+'')
                 setFirstCard(card.srcReturn)
                 setFirstCardID(card.id)
             }
             if (id === card.id && firstCard !== null && firstCard !== secondCard && secondCard === null){
-                console.log('second card: '+card.srcReturn+'')
                 setSecondCard(card.srcReturn)
                 setSecondCardID(card.id)
             }
@@ -102,7 +103,6 @@ function Cards(){
                 }
             })
             setCards(updatedCards)
-            console.log('yes')
             //RESET
             setFirstCard(null)
             setSecondCard(null)
@@ -121,7 +121,17 @@ function Cards(){
                 //RESET
                 setFirstCard(null)
                 setSecondCard(null)
-            } 
+                setError1(true)
+                if (error1){
+                    setError2(true)
+                    if(error2){
+                        setError3(true)
+                        if(error3){
+                            setError4(true)
+                        }
+                    }
+                }
+            }
         }         
     }, [secondCard])
 
@@ -157,6 +167,12 @@ function Cards(){
         <div className="grid">
             {cardsGrid}
             <Start start={startGame}/>
+            <Board 
+            crossSrc1={error1 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+            crossSrc2={error2 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+            crossSrc3={error3 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+            crossSrc4={error4 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+            />
         </div>
     )
 }

@@ -7,22 +7,23 @@ function Start({start}){
     const [count, setCount] = useState(10)
 
 
-    useEffect(()=>{
-        if (count > 0){
-            setInterval(()=>{setCount(count - 1)}, 1000)
-        }else{
-            setShowCount(false)
+    useEffect(() => {
+        let intervalId;
+        if (showCount && count > 0) {
+            intervalId = setInterval(() => {
+                setCount((prevCount) => prevCount - 1);
+            }, 1000);
+        } else {
+            clearInterval(intervalId);
+            setShowCount(false);
         }
-    }, [count])
-
-    const counter = () =>{
-        setShowCount(true)
-    }
+        return () => clearInterval(intervalId);
+    }, [showCount, count]);
+        
     
-
     const handleClick = () =>{
         start();
-        counter();
+        setShowCount(true)
     }
                  
 

@@ -1,9 +1,11 @@
 import './App.css'
-import Board from './components/Board'
+import Cards from './components/Cards'
 
 function App(){
     return (
-        <Board />
+        <div>
+            <Cards />
+        </div>    
     )
 }
 
