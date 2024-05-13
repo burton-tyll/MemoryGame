@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Start from "./Start"
 import Board from "./Board";
+import '../App.css'
+import Gameover from "./Gameover";
+import Victory from "./Victory";
 
 function Cards(){
+
+    const band = document.getElementById('soundtrack')
+    const errorSound = ["error", "/src/assets/sounds/errorSound.wav"];
+    const gameoverSound = ["gameover", "/src/assets/sounds/gameover.wav"]
+    const matchSound = ["match", "/src/assets/sounds/match.wav"]
+    const victorySound = ["victory", "/src/assets/sounds/victoryBand.mp3"]
+    const [gameover, setGameover] = useState(false)
+    const [victory, setVictory] = useState(false)
 
     const [animate, setAnimate] = useState(false)
     const [imgSrc, setImgSrc] = useState(false)
@@ -16,24 +27,51 @@ function Cards(){
     const [error3, setError3] = useState(false)
     const [error4, setError4] = useState(false)
 
+    const playSound = (sound) => {
+        const Sound = document.getElementById(sound[0]);
+        Sound.play();
+    };
+
     const [cards, setCards] = useState([
-            { id: 1, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/heisenberg.jpg", animate: "frame"},
-            { id: 2, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/onepiece.jpg", animate: "frame"},
-            { id: 3, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/tlou.jpg", animate: "frame"},
-            { id: 4, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/zelda.jpg", animate: "frame"},
-            { id: 5, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/heisenberg.jpg", animate: "frame"},
-            { id: 6, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/onepiece.jpg", animate: "frame"},
-            { id: 7, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/tlou.jpg", animate: "frame"},
-            { id: 8, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/zelda.jpg", animate: "frame"},
-            { id: 9, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.jpg", animate: "frame"},
-            { id: 10, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/astronaute.jpg", animate: "frame"},
-            { id: 11, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/ocarina.jpg", animate: "frame"},
-            { id: 12, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/ac.jpg", animate: "frame"},
-            { id: 13, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.jpg", animate: "frame"},
-            { id: 14, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/astronaute.jpg", animate: "frame"},
-            { id: 15, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/ocarina.jpg", animate: "frame"},
-            { id: 16, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/ac.jpg", animate: "frame"}
+            { id: 1, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/yoshi.png", animate: "frame"},
+            { id: 2, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/bowser.png", animate: "frame"},
+            { id: 3, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/waluigi.png", animate: "frame"},
+            { id: 4, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/donkeykong.png", animate: "frame"},
+            { id: 5, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/yoshi.png", animate: "frame"},
+            { id: 6, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/bowser.png", animate: "frame"},
+            { id: 7, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/waluigi.png", animate: "frame"},
+            { id: 8, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/donkeykong.png", animate: "frame"},
+            { id: 9, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.png", animate: "frame"},
+            { id: 10, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/goomba.png", animate: "frame"},
+            { id: 11, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/peach.png", animate: "frame"},
+            { id: 12, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/toad.png", animate: "frame"},
+            { id: 13, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.png", animate: "frame"},
+            { id: 14, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/goomba.png", animate: "frame"},
+            { id: 15, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/peach.png", animate: "frame"},
+            { id: 16, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/toad.png", animate: "frame"}
         ])
+
+    let tabTrue = [];
+    const allCardsTrue = () => {
+        cards.forEach(card => {
+            if (card.animate === "disabledCard") {
+                tabTrue.push(card);
+            }
+        });
+
+        // Vérification si le nombre de cartes retournées correspond au nombre total de cartes
+        if (tabTrue.length === cards.length) {
+            setVictory(true)
+            band.pause();
+            playSound(victorySound)
+        }
+    };
+
+    useEffect(()=>{
+        allCardsTrue()
+    }, [cards])
+
+    
 
     const showCard = (id) => {
         const updatedCards = cards.map(card => {
@@ -80,7 +118,7 @@ function Cards(){
 
     const chooseCards = (id) => {
         const cardOne = cards.map(card => {
-            if (id === card.id && firstCard === null){
+            if (id === card.id && firstCard === null && card.src !== card.srcReturn){
                 setFirstCard(card.srcReturn)
                 setFirstCardID(card.id)
             }
@@ -91,6 +129,11 @@ function Cards(){
         })
     };
 
+
+    const retryGame = () =>{
+        window.location.reload()
+    }
+
     //Ici on applique la comparaison des cartes sélectionnées
     useEffect(() => {
         if (firstCard !== null && secondCard !== null && firstCard === secondCard && firstCardID !== secondCardID){
@@ -98,6 +141,7 @@ function Cards(){
             const updatedCards = cards.map(card =>{
                 if(firstCard === card.srcReturn){
                     return {...card, animate: "disabledCard"}
+                    allCardsTrue(card.id)
                 }else{
                     return card
                 }
@@ -106,6 +150,7 @@ function Cards(){
             //RESET
             setFirstCard(null)
             setSecondCard(null)
+            playSound(matchSound)
         }else{
             //ACTION
             if (firstCard !==null && secondCard !==null){
@@ -122,37 +167,52 @@ function Cards(){
                 setFirstCard(null)
                 setSecondCard(null)
                 setError1(true)
+                playSound(errorSound)
                 if (error1){
+                    playSound(errorSound)
                     setError2(true)
                     if(error2){
+                        playSound(errorSound)
                         setError3(true)
                         if(error3){
+                            playSound(gameoverSound)
                             setError4(true)
+                            band.pause();
+                            setGameover(true)
                         }
                     }
                 }
             }
         }         
     }, [secondCard])
+    
 
-    const startGame = () =>{
-        setGameStarted(true)
-        const shuffledCards = shuffleCards(cards)
-        const showAllCards = () =>{
-            const updatedCards = shuffledCards.map(card =>{
-                return {...card, src: card.srcReturn}
-            })
-            setCards(updatedCards)
-        }
-        showAllCards()
-        const hideAllCards = () =>{
-            const updatedCards = shuffledCards.map(card =>{
-                return {...card, src: card.src}
-            })
-            setCards(updatedCards)
-        }
-        setTimeout(()=>{hideAllCards()}, 10000)
-    }
+    const startGame = () => {
+    setGameStarted(true);
+    const shuffledCards = shuffleCards(cards);
+    const showAllCards = () => {
+        console.log(shuffledCards);
+        const animateCards = cards.map(card =>{
+            return{...card, animate: "cardAnimate"}
+        })
+        setCards(animateCards)
+        const updatedCards = shuffledCards.map(card => {
+            return { ...card, src: card.srcReturn};
+        });
+        setTimeout(()=>{setCards(updatedCards);}, 300)
+        setTimeout(hideAllCards, 5000); // Appel à hideAllCards() après 10 secondes
+    };
+
+    const hideAllCards = () => {
+        const updatedCards = shuffledCards.map(card => {
+            return { ...card, src: card.src };
+        });
+        setCards(updatedCards);
+    };
+
+    showAllCards();
+};
+
 
     const cardsGrid = cards.map(card =>{
         return (<img 
@@ -164,15 +224,27 @@ function Cards(){
     })
 
     return(
-        <div className="grid">
-            {cardsGrid}
-            <Start start={startGame}/>
-            <Board 
-            crossSrc1={error1 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-            crossSrc2={error2 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-            crossSrc3={error3 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-            crossSrc4={error4 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-            />
+        <div className="Box">
+            <div className="cardsContainer">
+                <div className="startContainer">
+                    <div className="grid">
+                        {cardsGrid}
+                    </div>
+                    <Start start={startGame}/>
+                </div>
+                <Board 
+                    crossSrc1={error1 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+                    crossSrc2={error2 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+                    crossSrc3={error3 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+                    crossSrc4={error4 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+                />
+            </div>
+            <audio id="error" src="/src/assets/sounds/errorSound.wav" type="audio/mp3"></audio>
+            <audio id="gameover" src="/src/assets/sounds/gameover.wav" type="audio/mp3"></audio>
+            <audio id="match" src="/src/assets/sounds/match.wav" type="audio/mp3"></audio>
+            <audio id="victory" src="/src/assets/sounds/victoryBand.mp3" type="audio/mp3"></audio>
+            <Gameover retryButton={retryGame} gameoverClass={gameover ? "gameoverScreen" : "gameoverScreenDisabled"}/>
+            <Victory retryButton={retryGame} victoryClass={victory ? "victoryScreen" : "victoryScreenDisabled"}/>
         </div>
     )
 }

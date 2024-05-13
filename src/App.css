@@ -1,16 +1,39 @@
+html{
+    height: 100%;
+}
+
 body{
-    background-color: #1F1F1F;
-    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
 }
 
 #root{
     width: 100%;
+    height: 100%;
 }
 
 .app{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.Container{
+    height: 100%;
+}
+
+.Box{
+    background: url('../src/assets/img/cardsBackgorund.jpg');
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    z-index: 3;
 }
 
 /*---------------*/            /*-------------*/
@@ -20,11 +43,24 @@ body{
 /*--------------------*/
 /*----------------------Cards*/
 /*--------------------*/
+
+.cardsContainer{
+    min-height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .frame {
     width: 150px;
     height: 150px;
     border: 3px solid black;
     border-radius: 10px;
+}
+
+.frame:hover{
+    transform: scaleX(105%) scaleY(105%);
 }
 
 .cardAnimate {
@@ -58,16 +94,20 @@ body{
 /*----------------------Start Button*/
 /*--------------------*/
 
+.startContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .startButton{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    padding: 10px;
-    background-color: #403F42;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #ff0000;
     color: white;
     border-radius: 10px;
     border: 2px solid white;
-    margin-top: 10px;
+    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
 }
 
 /*--------------------*/
@@ -81,13 +121,15 @@ body{
 
 .Counter{
     position: absolute;
-    left: 50%;
+    left: 15%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
+
 
 /*--------------------*/
 /*----------------------Cross*/
@@ -98,7 +140,8 @@ body{
 }
 
 .Board{
-    position: absolute;
+    background-color: rgba(255, 255, 255, 0.514);
+    backdrop-filter: blur(5px);
     right: 10px;
     border: 2px solid black;
     border-radius: 10px;
@@ -107,12 +150,78 @@ body{
     box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
-.Bienvenue{
+
+/*--------------------*/
+/*----------------------GameOver*/
+/*--------------------*/
+
+.gameoverScreen {
+    background: url('/src/assets/img/gameoverScreen.png');
+    background-size: cover;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: border-radius 0px ease;
+    transform: scale(100%);
+    transition: 2s ease;
+    z-index: 999;
 }
+
+.gameoverScreenDisabled{
+    position: absolute;
+    background: url('/src/assets/img/gameoverScreen.png');
+    scale: 0%;
+    border-radius: 1000px;
+    left: 50%;
+    top: 50%;
+}
+
+.gameoverTitle{
+    position: absolute;
+    top: 0;
+    scale: 50%;
+    height: 250px;
+    width: 1620px;
+}
+
+.retryButton{
+    padding: 10px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 80px;
+    background-color: #ff0000;
+    color: white;
+    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
+}
+
+.victoryScreen {
+    background: url('/src/assets/img/victoryScreen.jpeg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: border-radius 0px ease;
+    transform: scale(100%);
+    transition: 2s ease;
+    z-index: 999;
+}
+
+.victoryScreenDisabled{
+    position: absolute;
+    background: url('/src/assets/img/victoryScreen.jpeg');
+    scale: 0%;
+    border-radius: 1000px;
+    left: 50%;
+    top: 50%;
+}
+
+
 
 
 

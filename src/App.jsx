@@ -1,12 +1,13 @@
+import Welcome from './components/Welcome';
 import './App.css'
-import Cards from './components/Cards'
 
-function App(){
+function App() {
+
     return (
         <div>
-            <Cards />
-        </div>    
-    )
+            <Welcome />
+        </div> 
+    );
 }
 
-export default App
+export default App;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function Start({start}){
 
     const [showCount, setShowCount] = useState(false)
-    const [count, setCount] = useState(10)
+    const [count, setCount] = useState(5)
 
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function Start({start}){
                  
 
     return(
-        <div>
+        <div className="startContainer">
             <button onClick={handleClick} className="startButton">Commencer le jeu</button>
             <Counter counterClass={showCount ? "Counter" : "hideCounter"} count={count}/>
         </div> 
