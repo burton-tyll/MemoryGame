@@ -78,19 +78,38 @@ header{
     justify-content: space-between;
 }
 
-.menuButton{
+.playButton{
     padding: 10px;
     border: none;
     background: none;
     font-weight: bolder;
     font-size: 20px;
     cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
+    position: absolute;
+    z-index: 3;
+    left: 35%;
+    top: 54%;
 }
 
-.playArea{
-    background-color: blueviolet;
+.playButton img{
+    width: 150px;
+}
+
+.rulesButton{
+    padding: 10px;
+    border: none;
+    background: none;
+    font-weight: bolder;
+    font-size: 20px;
+    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
     position: absolute;
-    z-index: 999;
+    z-index: 3;
+    left: 53%;
+    top: 54%;
+}
+
+.rulesButton img{
+    width: 150px;
 }
 
 

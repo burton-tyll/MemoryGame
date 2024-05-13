@@ -1,7 +1,7 @@
 function Board({crossSrc1, crossSrc2, crossSrc3, crossSrc4}){
 
     const score = () =>{
-        
+
     }
 
     return(

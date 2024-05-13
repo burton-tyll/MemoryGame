@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Start from "./Start"
 import Board from "./Board";
 import '../App.css'
@@ -15,8 +15,6 @@ function Cards(){
     const [gameover, setGameover] = useState(false)
     const [victory, setVictory] = useState(false)
 
-    const [animate, setAnimate] = useState(false)
-    const [imgSrc, setImgSrc] = useState(false)
     const [gameStarted, setGameStarted] = useState(false)
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
@@ -92,24 +90,6 @@ function Cards(){
         setCards(updatedCards);
     };
 
-    const hideCards = (id) => {
-        const updatedCards = cards.map(card => {
-            if (id === card.id) {
-                setTimeout(() => {
-                    setCards(prevCards => 
-                        prevCards.map(prevCard => 
-                            prevCard.id === id ? { ...prevCard, src: card.src } : prevCard
-                        )
-                    );
-                }, 300);
-                return { ...card, animate: "cardAnimate" };
-            } else {
-                return card;
-            }
-        });
-        setCards(updatedCards);
-    };
-
     const shuffleCards = (array) => {
         const basicCards = [...array]
         const shuffledCards = basicCards.sort(() => Math.random() - 0.5);
@@ -117,7 +97,7 @@ function Cards(){
     };
 
     const chooseCards = (id) => {
-        const cardOne = cards.map(card => {
+        cards.map(card => {
             if (id === card.id && firstCard === null && card.src !== card.srcReturn){
                 setFirstCard(card.srcReturn)
                 setFirstCardID(card.id)
@@ -141,7 +121,6 @@ function Cards(){
             const updatedCards = cards.map(card =>{
                 if(firstCard === card.srcReturn){
                     return {...card, animate: "disabledCard"}
-                    allCardsTrue(card.id)
                 }else{
                     return card
                 }

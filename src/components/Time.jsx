@@ -1,6 +1,3 @@
-import { useState } from "react"
-import Cards from "./Cards"
-
 function Time({timeCount}){
 
     return(

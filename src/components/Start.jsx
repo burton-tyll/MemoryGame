@@ -27,7 +27,7 @@ function Start({start}){
         start()
         setShowCount(true);
         // Démarrer l'incrémentation du temps après avoir cliqué sur le bouton
-        const timeIntervalId = setTimeout(()=>{setInterval(() => {
+        setTimeout(()=>{setInterval(() => {
             setTime(prevTime => prevTime + 1);
         }, 1000);}, 5000)
     };

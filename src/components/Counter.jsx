@@ -1,4 +1,4 @@
-function Counter({counterClass, count}){
+function Counter({count, counterClass}){
 
     return(
         <div className={counterClass}>

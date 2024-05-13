@@ -23,23 +23,16 @@ function Welcome() {
         setShowRules(!showRules)
     }
 
-    const test = () =>{
-        alert('yes')
-    }
-
     return (
         <div className='Container'>
             <main>
-                <img className='welcome_background' src='/src/assets/img/background.jpg' alt='welcomeBackground' useMap='play'></img>
-                <map name="play">
-                    <area className='playArea' shape="rect" coords="100,100,200,200" href='#' onClick={test}/>
-                </map>
+                <div className='boutons'>
+                    <img className='welcome_background' src='/src/assets/img/background.jpg' alt='welcomeBackground' useMap='#buttons' />
+                    <button className='playButton' onClick={launchGame}><img src='/src/assets/img/playButton.png' /></button>
+                    <button className='rulesButton' onClick={rules}><img src='/src/assets/img/rulesButton.png'/></button>
+                </div>
                 {showComponentCards ? <Cards /> : null}
                 <audio loop id="soundtrack" src="/src/assets/sounds/marioBrosBand.mp3" type="audio/mp3" autoPlay></audio>
-                <div className='menu'>
-                    <button className='menuButton' onClick={launchGame}>Jouer</button>
-                    <button className='menuButton' onClick={rules}>Règles</button>
-                </div>
                 <div className={showRules ? "BienvenueAnimate" : "Bienvenue"}>
                     <h1>Bienvenue sur Mario Card</h1>
                     <p>Trouve les cartes identiques pour les retourner</p>
