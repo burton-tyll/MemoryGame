@@ -24,6 +24,7 @@ function Start({start}){
         
     
     const handleClick = () => {
+        start()
         setShowCount(true);
         // Démarrer l'incrémentation du temps après avoir cliqué sur le bouton
         const timeIntervalId = setTimeout(()=>{setInterval(() => {
