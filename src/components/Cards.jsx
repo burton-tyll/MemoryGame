@@ -4,6 +4,7 @@ import Board from "./Board";
 import '../App.css'
 import Gameover from "./Gameover";
 import Victory from "./Victory";
+import Time from "./Time";
 
 function Cards(){
 

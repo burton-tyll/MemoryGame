@@ -23,10 +23,17 @@ function Welcome() {
         setShowRules(!showRules)
     }
 
+    const test = () =>{
+        alert('yes')
+    }
+
     return (
         <div className='Container'>
             <main>
-                <img className='welcome_background' src='/src/assets/img/background.jpeg'></img>
+                <img className='welcome_background' src='/src/assets/img/background.jpg' alt='welcomeBackground' useMap='play'></img>
+                <map name="play">
+                    <area className='playArea' shape="rect" coords="100,100,200,200" href='#' onClick={test}/>
+                </map>
                 {showComponentCards ? <Cards /> : null}
                 <audio loop id="soundtrack" src="/src/assets/sounds/marioBrosBand.mp3" type="audio/mp3" autoPlay></audio>
                 <div className='menu'>

@@ -87,4 +87,10 @@ header{
     cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
 }
 
+.playArea{
+    background-color: blueviolet;
+    position: absolute;
+    z-index: 999;
+}
+
 

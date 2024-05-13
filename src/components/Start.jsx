@@ -1,10 +1,12 @@
 import Counter from "./Counter";
 import { useEffect, useState } from "react";
+import Time from "./Time";
 
 function Start({start}){
 
     const [showCount, setShowCount] = useState(false)
     const [count, setCount] = useState(5)
+    const [time, setTime] = useState(0)
 
 
     useEffect(() => {
@@ -21,15 +23,19 @@ function Start({start}){
     }, [showCount, count]);
         
     
-    const handleClick = () =>{
-        start();
-        setShowCount(true)
-    }
+    const handleClick = () => {
+        setShowCount(true);
+        // Démarrer l'incrémentation du temps après avoir cliqué sur le bouton
+        const timeIntervalId = setTimeout(()=>{setInterval(() => {
+            setTime(prevTime => prevTime + 1);
+        }, 1000);}, 5000)
+    };
                  
 
     return(
         <div className="startContainer">
             <button onClick={handleClick} className="startButton">Commencer le jeu</button>
+            <Time timeCount={time}/>
             <Counter counterClass={showCount ? "Counter" : "hideCounter"} count={count}/>
         </div> 
     )
