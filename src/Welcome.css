@@ -53,6 +53,16 @@ header{
     z-index: 5;
 }
 
+.BienvenueAnimate p, .BienvenueAnimate h5{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.BienvenueAnimate img, .Bienvenue img{
+    width: 30px;
+}
+
 .welcomeMessage{
     display: flex;
     flex-direction: column;
@@ -62,6 +72,7 @@ header{
     backdrop-filter: blur(5px);
     color: white;
     font-size: larger;
+    height: max-content;
 }
 
 .welcomeMessage p{

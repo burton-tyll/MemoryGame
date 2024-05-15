@@ -49,6 +49,31 @@ function Cards(){
             { id: 16, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/toad.png", animate: "frame"}
         ])
 
+    const setScore = () => {
+        const newTime = localStorage.getItem('timer');
+        localStorage.setItem('lastScore', newTime)
+        let scores = [];
+    
+        // On récupère tous les scores déjà enregistrés
+        let existingScores = localStorage.getItem('scores');
+        if (existingScores !== '' && existingScores !== null){
+            scores = JSON.parse(existingScores);
+            // Vérifier si le nouveau score n'existe pas déjà dans le tableau
+            if (!scores.includes(newTime)) {
+                scores.push(newTime);
+            }
+        } else {
+            scores.push(newTime);
+        }
+        
+        // Stocker les scores mis à jour dans le localStorage
+        localStorage.setItem('scores', JSON.stringify(scores));
+        
+        console.log(scores);
+    }
+        
+        
+
     let tabTrue = [];
     const allCardsTrue = () => {
         cards.forEach(card => {
@@ -62,14 +87,13 @@ function Cards(){
             setVictory(true)
             band.pause();
             playSound(victorySound)
+            setScore()
         }
     };
 
     useEffect(()=>{
         allCardsTrue()
     }, [cards])
-
-    
 
     const showCard = (id) => {
         const updatedCards = cards.map(card => {
@@ -167,30 +191,30 @@ function Cards(){
     
 
     const startGame = () => {
-    setGameStarted(true);
-    const shuffledCards = shuffleCards(cards);
-    const showAllCards = () => {
-        console.log(shuffledCards);
-        const animateCards = cards.map(card =>{
-            return{...card, animate: "cardAnimate"}
-        })
-        setCards(animateCards)
-        const updatedCards = shuffledCards.map(card => {
-            return { ...card, src: card.srcReturn};
-        });
-        setTimeout(()=>{setCards(updatedCards);}, 300)
-        setTimeout(hideAllCards, 5000); // Appel à hideAllCards() après 10 secondes
-    };
+        setGameStarted(true);
+        const shuffledCards = shuffleCards(cards);
+        const showAllCards = () => {
+            console.log(shuffledCards);
+            const animateCards = cards.map(card =>{
+                return{...card, animate: "cardAnimate"}
+            })
+            setCards(animateCards)
+            const updatedCards = shuffledCards.map(card => {
+                return { ...card, src: card.srcReturn};
+            });
+            setTimeout(()=>{setCards(updatedCards);}, 300)
+            setTimeout(hideAllCards, 5000); // Appel à hideAllCards() après 10 secondes
+        };
 
-    const hideAllCards = () => {
-        const updatedCards = shuffledCards.map(card => {
-            return { ...card, src: card.src };
-        });
-        setCards(updatedCards);
-    };
+        const hideAllCards = () => {
+            const updatedCards = shuffledCards.map(card => {
+                return { ...card, src: card.src };
+            });
+            setCards(updatedCards);
+        };
 
-    showAllCards();
-};
+        showAllCards();
+    };
 
 
     const cardsGrid = cards.map(card =>{

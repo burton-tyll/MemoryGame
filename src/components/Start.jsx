@@ -2,7 +2,7 @@ import Counter from "./Counter";
 import { useEffect, useState } from "react";
 import Time from "./Time";
 
-function Start({start}){
+function Start({ start }){
 
     const [showCount, setShowCount] = useState(false)
     const [count, setCount] = useState(5)
@@ -26,11 +26,16 @@ function Start({start}){
     const handleClick = () => {
         start()
         setShowCount(true);
+        setTimeout(()=>{startMatch.play()}, 1800)
         // Démarrer l'incrémentation du temps après avoir cliqué sur le bouton
         setTimeout(()=>{setInterval(() => {
             setTime(prevTime => prevTime + 1);
         }, 1000);}, 5000)
     };
+
+    useEffect(()=>{
+        localStorage.setItem('timer', time)
+    }, [time])
                  
 
     return(
@@ -38,6 +43,7 @@ function Start({start}){
             <button onClick={handleClick} className="startButton">Commencer le jeu</button>
             <Time timeCount={time}/>
             <Counter counterClass={showCount ? "Counter" : "hideCounter"} count={count}/>
+            <audio id="startMatch" src="/src/assets/sounds/mariostart.mp3" type="audio/mp3"></audio>
         </div> 
     )
 }

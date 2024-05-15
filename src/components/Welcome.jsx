@@ -35,11 +35,11 @@ function Welcome() {
                 <audio loop id="soundtrack" src="/src/assets/sounds/marioBrosBand.mp3" type="audio/mp3" autoPlay></audio>
                 <div className={showRules ? "BienvenueAnimate" : "Bienvenue"}>
                     <h1>Bienvenue sur Mario Card</h1>
-                    <p>Trouve les cartes identiques pour les retourner</p>
-                    <p>Le jeu se termine lorsque tu as retourné toutes les cartes.</p>
-                    <p>Tu disposes de 10 secondes pour observer toutes les cartes alors ouvre grands les yeux!!</p>
-                    <p>Tu as le droit à 4 erreurs, au delà de ça tu peux recommencer! 🙃</p>
-                    <h5>Bon chance!</h5>
+                    <p><img src='/src/assets/img/piece.png'/>Trouve les cartes identiques pour les retourner</p>
+                    <p><img src='/src/assets/img/piece.png'/>Le jeu se termine lorsque tu as retourné toutes les cartes.</p>
+                    <p><img src='/src/assets/img/piece.png'/>Tu disposes de 10 secondes pour observer toutes les cartes alors ouvre grands les yeux!!</p>
+                    <p><img src='/src/assets/img/piece.png'/>Tu as le droit à 4 erreurs, au delà de ça tu peux recommencer! 🙃</p>
+                    <h5><img src='/src/assets/img/piece.png'/>Bonne chance!</h5>
                 </div>
             </main>
             {sound && <audio loop id="soundtrack" src="/src/assets/sounds/marioBrosBand.mp3" type="audio/mp3" ></audio>}
