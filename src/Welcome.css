@@ -135,7 +135,7 @@ header{
 /*---------------*/
 
 /*--Mobiles--*/
-@media (max-width: 430px){
+@media (max-width: 768px){
     body{
         background: url('/assets/img/background_mobile.jpg');
         background-size: cover;

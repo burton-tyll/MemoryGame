@@ -260,7 +260,7 @@ body{
 /*---------------*/
 
 /*--Mobiles--*/
-@media (max-width: 426px){
+@media (max-width: 768px){
 
     .startContainer{
         margin-top: 25px;
@@ -330,19 +330,20 @@ body{
         font-size: 100px;
     }
 
-    .victoryScreen{
+    .victoryScreen, .victoryScreenDisabled{
         background: url('/assets/img/victoryScreen_mobile.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
 
-    .gameoverScreen{
+    .gameoverScreen, .gameoverScreenDisabled{
         background: url('/assets/img/gameoverScreen_mobile.jpg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
+
 }
 
 

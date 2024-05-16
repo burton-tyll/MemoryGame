@@ -186,7 +186,6 @@ function Cards(){
         setGameStarted(true);
         const shuffledCards = shuffleCards(cards);
         const showAllCards = () => {
-            console.log(shuffledCards);
             const animateCards = cards.map(card =>{
                 return{...card, animate: "cardAnimate"}
             })
