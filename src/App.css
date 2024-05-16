@@ -6,7 +6,7 @@ body{
     height: 100%;
     margin: 0;
     padding: 0;
-    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
+    cursor: url('/assets/img/mario_cursor.cur'), pointer;
 }
 
 #root{
@@ -25,7 +25,7 @@ body{
 }
 
 .Box{
-    background: url('../src/assets/img/cardsBackgorund.jpg');
+    background: url('/assets/img/cardsBackgorund.jpg');
     position: absolute;
     display: flex;
     justify-content: center;
@@ -108,7 +108,7 @@ body{
     color: white;
     border-radius: 10px;
     border: 2px solid white;
-    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
+    cursor: url('/assets/img/mario_cursor.cur'), pointer;
 }
 
 /*--------------------*/
@@ -180,7 +180,7 @@ body{
 /*--------------------*/
 
 .gameoverScreen {
-    background: url('/src/assets/img/gameoverScreen.png');
+    background: url('/assets/img/gameoverScreen.png');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -196,7 +196,7 @@ body{
 
 .gameoverScreenDisabled{
     position: absolute;
-    background: url('/src/assets/img/gameoverScreen.png');
+    background: url('/assets/img/gameoverScreen.png');
     scale: 0%;
     border-radius: 1000px;
     left: 50%;
@@ -218,11 +218,11 @@ body{
     bottom: 80px;
     background-color: #ff0000;
     color: white;
-    cursor: url('/src/assets/img/mario_cursor.cur'), pointer;
+    cursor: url('/assets/img/mario_cursor.cur'), pointer;
 }
 
 .victoryScreen {
-    background: url('/src/assets/img/victoryScreen.jpeg');
+    background: url('/assets/img/victoryScreen.jpeg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -238,7 +238,7 @@ body{
 
 .victoryScreenDisabled{
     position: absolute;
-    background: url('/src/assets/img/victoryScreen.jpeg');
+    background: url('/assets/img/victoryScreen.jpeg');
     scale: 0%;
     border-radius: 1000px;
     left: 50%;

@@ -1,8 +1,8 @@
-function Time({timeCount}){
+function Time( { timeCount } ){
 
     return(
         <div className="timer">
-            <img className='timerImage' src="/src/assets/img/timer.png"/>
+            <img className='timerImage' src="/assets/img/timer.png"/>
             <h2 className="timerh2">{timeCount}</h2>
         </div>
     )

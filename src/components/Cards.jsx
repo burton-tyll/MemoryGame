@@ -8,10 +8,10 @@ import Victory from "./Victory";
 function Cards(){
 
     const band = document.getElementById('soundtrack')
-    const errorSound = ["error", "/src/assets/sounds/errorSound.wav"];
-    const gameoverSound = ["gameover", "/src/assets/sounds/gameover.wav"]
-    const matchSound = ["match", "/src/assets/sounds/match.wav"]
-    const victorySound = ["victory", "/src/assets/sounds/victoryBand.mp3"]
+    const errorSound = ["error", "/assets/sounds/errorSound.wav"];
+    const gameoverSound = ["gameover", "/assets/sounds/gameover.wav"]
+    const matchSound = ["match", "/assets/sounds/match.wav"]
+    const victorySound = ["victory", "/assets/sounds/victoryBand.mp3"]
     const [gameover, setGameover] = useState(false)
     const [victory, setVictory] = useState(false)
 
@@ -31,22 +31,22 @@ function Cards(){
     };
 
     const [cards, setCards] = useState([
-            { id: 1, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/yoshi.png", animate: "frame"},
-            { id: 2, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/bowser.png", animate: "frame"},
-            { id: 3, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/waluigi.png", animate: "frame"},
-            { id: 4, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/donkeykong.png", animate: "frame"},
-            { id: 5, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/yoshi.png", animate: "frame"},
-            { id: 6, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/bowser.png", animate: "frame"},
-            { id: 7, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/waluigi.png", animate: "frame"},
-            { id: 8, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/donkeykong.png", animate: "frame"},
-            { id: 9, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.png", animate: "frame"},
-            { id: 10, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/goomba.png", animate: "frame"},
-            { id: 11, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/peach.png", animate: "frame"},
-            { id: 12, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/toad.png", animate: "frame"},
-            { id: 13, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/mario.png", animate: "frame"},
-            { id: 14, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/goomba.png", animate: "frame"},
-            { id: 15, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/peach.png", animate: "frame"},
-            { id: 16, src: "/src/assets/img/back_card.jpg", srcReturn:"src/assets/img/toad.png", animate: "frame"}
+            { id: 1, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/yoshi.png", animate: "frame"},
+            { id: 2, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/bowser.png", animate: "frame"},
+            { id: 3, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/waluigi.png", animate: "frame"},
+            { id: 4, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/donkeykong.png", animate: "frame"},
+            { id: 5, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/yoshi.png", animate: "frame"},
+            { id: 6, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/bowser.png", animate: "frame"},
+            { id: 7, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/waluigi.png", animate: "frame"},
+            { id: 8, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/donkeykong.png", animate: "frame"},
+            { id: 9, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/mario.png", animate: "frame"},
+            { id: 10, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/goomba.png", animate: "frame"},
+            { id: 11, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/peach.png", animate: "frame"},
+            { id: 12, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/toad.png", animate: "frame"},
+            { id: 13, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/mario.png", animate: "frame"},
+            { id: 14, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/goomba.png", animate: "frame"},
+            { id: 15, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/peach.png", animate: "frame"},
+            { id: 16, src: "/assets/img/back_card.jpg", srcReturn:"/assets/img/toad.png", animate: "frame"}
         ])
 
     const setScore = () => {
@@ -74,26 +74,18 @@ function Cards(){
         
         
 
-    let tabTrue = [];
-    const allCardsTrue = () => {
-        cards.forEach(card => {
-            if (card.animate === "disabledCard") {
-                tabTrue.push(card);
-            }
-        });
-
-        // Vérification si le nombre de cartes retournées correspond au nombre total de cartes
-        if (tabTrue.length === cards.length) {
-            setVictory(true)
+    useEffect(() => {
+        // Code existant pour vérifier les paires correspondantes
+    
+        const allCardsMatched = cards.every(card => card.animate === "disabledCard");
+        if (allCardsMatched) {
+            setVictory(true);
             band.pause();
-            playSound(victorySound)
-            setScore()
+            playSound(victorySound);
+            setScore(); // Enregistrer le score une fois la victoire obtenue
         }
-    };
-
-    useEffect(()=>{
-        allCardsTrue()
-    }, [cards])
+    }, [secondCard]);
+    
 
     const showCard = (id) => {
         const updatedCards = cards.map(card => {
@@ -159,7 +151,7 @@ function Cards(){
             if (firstCard !==null && secondCard !==null){
                 const updatedCards = cards.map(card =>{
                     if(card.animate !== "disabledCard"){
-                        const backCard = "/src/assets/img/back_card.jpg"
+                        const backCard = "/assets/img/back_card.jpg"
                         return {...card, src: backCard, animate: 'frame'}
                     }else{
                         return card
@@ -236,16 +228,16 @@ function Cards(){
                     <Start start={startGame}/>
                 </div>
                 <Board 
-                    crossSrc1={error1 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-                    crossSrc2={error2 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-                    crossSrc3={error3 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
-                    crossSrc4={error4 ? "/src/assets/img/croixRouge.png" : "/src/assets/img/croix.png"}
+                    crossSrc1={error1 ? "/assets/img/croixRouge.png" : "/assets/img/croix.png"}
+                    crossSrc2={error2 ? "/assets/img/croixRouge.png" : "/assets/img/croix.png"}
+                    crossSrc3={error3 ? "/assets/img/croixRouge.png" : "/assets/img/croix.png"}
+                    crossSrc4={error4 ? "/assets/img/croixRouge.png" : "/assets/img/croix.png"}
                 />
             </div>
-            <audio id="error" src="/src/assets/sounds/errorSound.wav" type="audio/mp3"></audio>
-            <audio id="gameover" src="/src/assets/sounds/gameover.wav" type="audio/mp3"></audio>
-            <audio id="match" src="/src/assets/sounds/match.wav" type="audio/mp3"></audio>
-            <audio id="victory" src="/src/assets/sounds/victoryBand.mp3" type="audio/mp3"></audio>
+            <audio id="error" src="/assets/sounds/errorSound.wav" type="audio/mp3"></audio>
+            <audio id="gameover" src="/assets/sounds/gameover.wav" type="audio/mp3"></audio>
+            <audio id="match" src="/assets/sounds/match.wav" type="audio/mp3"></audio>
+            <audio id="victory" src="/assets/sounds/victoryBand.mp3" type="audio/mp3"></audio>
             <Gameover retryButton={retryGame} gameoverClass={gameover ? "gameoverScreen" : "gameoverScreenDisabled"}/>
             <Victory retryButton={retryGame} victoryClass={victory ? "victoryScreen" : "victoryScreenDisabled"}/>
         </div>

@@ -43,7 +43,7 @@ function Start({ start }){
             <button onClick={handleClick} className="startButton">Commencer le jeu</button>
             <Time timeCount={time}/>
             <Counter counterClass={showCount ? "Counter" : "hideCounter"} count={count}/>
-            <audio id="startMatch" src="/src/assets/sounds/mariostart.mp3" type="audio/mp3"></audio>
+            <audio id="startMatch" src="/assets/sounds/mariostart.mp3" type="audio/mp3"></audio>
         </div> 
     )
 }
