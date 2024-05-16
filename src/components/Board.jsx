@@ -37,9 +37,9 @@ function Board({ crossSrc1, crossSrc2, crossSrc3, crossSrc4 }) {
                 <h1>Tableau des scores</h1>
                 <div className="scoreTab">
                     <h2>Meilleur score:</h2>
-                    <li key="best-score">{bestScore()} secondes</li>
+                    <li key="best-score"><img src='/assets/img/bestScore.png' className='bestScore'/>{bestScore()} secondes</li>
                     <h2>Dernier Score:</h2>
-                    <li key="last-score">{lastScore} secondes</li>
+                    <li key="last-score" className='lastScore'><img src='/assets/img/lastScore.png'/>{lastScore} secondes</li>
                 </div>
             </div>
         </div>

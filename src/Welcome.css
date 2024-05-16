@@ -3,6 +3,7 @@
 /*--------------------*/
 
 body{
+    background: url('/assets/img/background.jpg');
     background-size: cover;
 }
 
@@ -12,11 +13,8 @@ header{
     height: 150px;
 }
 
-.welcome_background{
-    width: 100%;
-    max-height: 100vh;
-    position: absolute;
-    z-index: 1;
+.screen, main{
+    height: 100%;
 }
 
 .Bienvenue {
@@ -99,7 +97,7 @@ header{
     position: absolute;
     z-index: 3;
     left: 35%;
-    top: 54%;
+    top: 60%;
 }
 
 .playButton img{
@@ -116,11 +114,52 @@ header{
     position: absolute;
     z-index: 3;
     left: 53%;
-    top: 54%;
+    top: 60%;
 }
 
 .rulesButton img{
     width: 150px;
 }
 
+.closeButton{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    font-weight: bolder;
+}
+
+
+/*---------------*/
+/*----------------RESPONSIVE--------*/
+/*---------------*/
+
+/*--Mobiles--*/
+@media (max-width: 430px){
+    body{
+        background: url('/assets/img/background_mobile.jpg');
+        background-size: cover;
+        backdrop-filter: blur(5px);
+    }
+
+    main{
+        display: flex;
+        justify-content: center;
+    }
+
+    .playButton, .rulesButton{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 20px 0;
+    }
+
+    .boutons{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
 

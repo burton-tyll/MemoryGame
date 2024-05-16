@@ -104,10 +104,10 @@ body{
 .startButton{
     margin-top: 15px;
     padding: 15px;
-    background-color: #ff0000;
+    background-color: #328B29;
     color: white;
     border-radius: 10px;
-    border: 2px solid white;
+    border: 2px solid #1c6614;
     cursor: url('/assets/img/mario_cursor.cur'), pointer;
 }
 
@@ -173,6 +173,16 @@ body{
 
 .scoreTab li{
     list-style-type: "\231B";
+    display: flex;
+    align-items: center;
+}
+
+.scoreTab img{
+    width: 30px;
+}
+
+.bestScore{
+    width: 40px !important;
 }
 
 /*--------------------*/
@@ -244,6 +254,99 @@ body{
     left: 50%;
     top: 50%;
 }
+
+/*---------------*/
+/*----------------RESPONSIVE--------*/
+/*---------------*/
+
+/*--Mobiles--*/
+@media (max-width: 426px){
+
+    .startContainer{
+        margin-top: 25px;
+    }
+
+    .grid{
+        grid-template-columns: repeat(4, 75px);
+        gap: 10px;
+    }
+
+    .grid img{
+        width: 75px;
+        height: 75px;
+    }
+
+    .cardsContainer{
+        flex-direction: column-reverse;
+    }
+
+    .Board{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .crossContainer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .crossContainer img{
+        width: 50px;
+    }
+
+    .welcomeMessage h1{
+        display: none;
+    }
+
+    .scoreTab h2, .lastScore{
+        display: none !important;
+    }
+
+    .Box{
+        justify-content: flex-start;
+    }
+
+    .timerImage, .timer{
+        width: 100px;
+        right: 0px;
+    }
+
+    .timeImage{
+        position: absolute;
+    }
+
+    .timerh2{
+        font-size: 25px;
+        right: 0;
+        top: 0;
+        margin-bottom: 0;
+        margin-top: 40px;
+        margin-right: 50px;
+    }
+
+    .Counter{
+        font-size: 100px;
+    }
+
+    .victoryScreen{
+        background: url('/assets/img/victoryScreen_mobile.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .gameoverScreen{
+        background: url('/assets/img/gameoverScreen_mobile.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+
+
 
 
 
